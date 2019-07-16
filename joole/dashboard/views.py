@@ -16,6 +16,7 @@ class ClientFormView(View):
             client_id = form.cleaned_data['client']
             return redirect('dashboard:results', client_id=client_id)
 
+
 def results(request, client_id):
     conso_euro = []
     conso_watt = []
