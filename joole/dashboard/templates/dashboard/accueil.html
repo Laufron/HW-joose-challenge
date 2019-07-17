@@ -29,11 +29,16 @@
         <form action="" method="post">
             {% csrf_token %}
             <div class="form-group input-group form-group-lg">
-                 <input id="id_client" maxlength="20" name="client" type="text" class="form-control" id="id_client" required placeholder="Entrez votre numéro de client">
+                 <input id="id_client" maxlength="20" name="client" type="text" class="form-control" required placeholder="Entrez votre numéro de client">
                     <span class="input-group-btn">
                         <button class="btn btn-primary btn-lg" type="submit"><i class="fa fa-bolt"></i></button>
                     </span>
             </div>
+            {% if form.client.errors %}
+              {% for error in form.client.errors %}
+                    <i class="fa fa-exclamation-circle"><i>  {{ error|escape }}</i></i>
+              {% endfor %}
+            {% endif %}
         </form>
         </div>
     </div>
