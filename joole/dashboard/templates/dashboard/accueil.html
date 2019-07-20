@@ -34,6 +34,9 @@
                         <button class="btn btn-primary btn-lg" type="submit"><i class="fa fa-bolt"></i></button>
                     </span>
             </div>
+            {% if mismatch_message != "" %}
+            <i class="fa fa-exclamation-circle"><i>  {{ mismatch_message }}</i></i>
+            {% endif %}
             {% if form.client.errors %}
               {% for error in form.client.errors %}
                     <i class="fa fa-exclamation-circle"><i>  {{ error|escape }}</i></i>

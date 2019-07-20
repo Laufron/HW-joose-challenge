@@ -9,9 +9,9 @@ class ClientForm(forms.Form):
     def clean_client(self):
         client = self.cleaned_data['client']
         if not client.isdigit():
-            raise forms.ValidationError("L'identifiant du client doit être un nombre positif")
+            raise forms.ValidationError("Le numéro de client doit être un nombre positif")
         else:
             if int(client) <= 0:
-                raise forms.ValidationError("Entrez un identifiant positif")
+                raise forms.ValidationError("Entrez un numéro de client positif")
 
         return client

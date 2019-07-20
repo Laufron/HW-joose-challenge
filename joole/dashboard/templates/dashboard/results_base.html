@@ -15,6 +15,14 @@
     <link href="/static/dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="/static/bower_components/morrisjs/morris.css" rel="stylesheet">
     <link href="/static/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/static/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="/static/bower_components/raphael/raphael-min.js"></script>
+    <script src="/static/bower_components/morrisjs/morris.js"></script>
+    <script src="/static/dist/js/sb-admin-2.js"></script>
+
     {% block style %}
     {% endblock %}
 </head>
@@ -93,18 +101,13 @@
             </div>
         </nav>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="background-color: white;">
             {% block content %}
             {% endblock %}
         </div>
     </div>
 
-    <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/static/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-    <script src="/static/bower_components/raphael/raphael-min.js"></script>
-    <script src="/static/bower_components/morrisjs/morris.min.js"></script>
-    <script src="/static/dist/js/sb-admin-2.js"></script>
+
 </body>
 
 {% block script %}

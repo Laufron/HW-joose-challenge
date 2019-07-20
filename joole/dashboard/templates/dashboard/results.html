@@ -4,17 +4,90 @@
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'dashboard/css/results.css' %}" media="all"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Mon tableau de bord énergie</h1>
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12" style="padding:0px; margin: 0;">
+            <h1 style="border-bottom:none;" class="page-header">Mon Tableau de Bord Energie</h1>
+        </div>
     </div>
-</div>
 
- -----> YOUR CODE HERE <-----
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12 block">
+            <div class="chart-card">
+                <div class="chart-title">COUT ANNUEL</div>
+                <div class="chart">
+                    {% for key, cost in annual_costs.items %}
+                       <div  id="year{{ key }}">&nbsp;En {{ key }} : </div>
+                       <div id="cost{{ key }}">&nbsp;{{ cost|floatformat:2 }} €</div>
+                    {% endfor %}
+                    <div class="arrow_evolution">
+                        {% if cost_increase %}
+                            <i style="color:#ff0f20" class="fa fa-2x fa-long-arrow-up fa-rotate-45"></i>
+                        {% else %}
+                             <i style="color:greenyellow" class="fa fa-2x fa-long-arrow-up fa-rotate-135"></i>
+                        {% endif %}
+                    </div>
+                </div>
 
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-6 col-xs-12 block">
+            <div class="chart-card">
+                <div class="chart-title">Annual Cost</div>
+                <div class="chart">
+
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-12 block">
+            <div class="chart-card">
+                <div class="chart-title">VOTRE CONSOMMATION ELECTRIQUE EN 2017</div>
+                <div id= "chart-container" class="chart">
+                    <div id="timechart" style="height:270px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <script>
+        new Morris.Area({
+            element: 'timechart',
+
+                data: [
+                    {x: '2017-01', y:{{ conso_watt_2017.janvier|floatformat:1 }} , z: {{ conso_euro_2017.janvier|floatformat:1  }}},
+                    {x: '2017-02', y:{{ conso_watt_2017.fevrier|floatformat:1  }}, z: {{ conso_euro_2017.fevrier|floatformat:1  }}},
+                    {x: '2017-03', y: {{ conso_watt_2017.mars|floatformat:1  }}, z: {{ conso_euro_2017.mars|floatformat:1  }}},
+                    {x: '2017-04', y: {{ conso_watt_2017.avril|floatformat:1 }}, z: {{ conso_euro_2017.avril|floatformat:1  }}},
+                    {x: '2017-05', y: {{ conso_watt_2017.mai|floatformat:1  }}, z: {{ conso_euro_2017.mai|floatformat:1  }}},
+                    {x: '2017-06', y: {{ conso_watt_2017.juin|floatformat:1  }}, z: {{ conso_euro_2017.juin|floatformat:1  }}},
+                    {x: '2017-07', y: {{ conso_watt_2017.juillet|floatformat:1  }}, z:{{ conso_euro_2017.juillet|floatformat:1  }}},
+                    {x: '2017-08', y: {{ conso_watt_2017.aout|floatformat:1  }}, z: {{ conso_euro_2017.aout|floatformat:1  }}},
+                    {x: '2017-09', y: {{ conso_watt_2017.septembre|floatformat:1  }}, z: {{ conso_euro_2017.septembre|floatformat:1  }}},
+                    {x: '2017-10', y: {{ conso_watt_2017.octobre|floatformat:1 }}, z: {{ conso_euro_2017.octobre|floatformat:1  }}},
+                    {x: '2017-11', y: {{ conso_watt_2017.novembre|floatformat:1  }}, z: {{ conso_euro_2017.novembre|floatformat:1  }}},
+                    {x: '2017-12', y: {{ conso_watt_2017.decembre|floatformat:1  }}, z: {{ conso_euro_2017.decembre|floatformat:1  }}}
+                      ],
+
+            xkey: 'x',
+            ykeys: ['y', 'z'],
+            labels: ['Consommation en kWh', 'Consommation en Euro'],
+            xLabels: 'month',
+            lineColors: ['#53ca32', '#eae80a'],
+            gridTextColor: 'white',
+            fillOpacity: 0.85,
+            resize: true,
+            postUnits:'kWh'
+            }).on('click', function(i, row){
+                console.log(i, row);
+            });
+    </script>
 {% endblock %}
 
 {% block script %}

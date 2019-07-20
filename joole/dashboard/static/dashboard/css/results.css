@@ -1,1 +1,154 @@
-/* ----> YOUR CODE HERE <---- */
+body {
+    font-family: "Nunito Sans", "sans-serif";
+}
+
+#page-wrapper{
+    color:#fdfdfd;
+}
+
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+h1{
+    color: black;
+}
+
+.page-header{
+    margin:25px;
+    padding:0;
+}
+
+ .block{
+     padding: 5px;
+     background-color: rgba(31, 145, 227, 0.93);
+     border-radius: 3px;
+ }
+
+ .block:hover{
+     background-color: rgb(40, 111, 209);
+ }
+
+ p, .chart-title{
+     color:white;
+ }
+
+ .chart-title{
+     font-size: 17px;
+     padding: 8px 15px;
+     border-bottom: solid ghostwhite 1px;
+ }
+
+ .chart{
+     padding: 2px 2px 5em 2px;
+     font-size: 22px;
+ }
+
+ #chart-container{
+     padding: 2px 2px 1em 2px;
+     font-size: 22px;
+ }
+
+
+ #year2016{
+     width:65%;float: left;
+     text-align: right;
+     font-size: 14px;
+     font-style: italic;
+
+ }
+
+
+ #cost2016{
+     float:right;
+     width:35%;
+     font-size: 14px;
+     font-style: italic;
+     font-weight: bold;
+ }
+
+ #year2017{
+     float: left;
+     font-size: 14px;
+     position: absolute;
+     top: 75%;
+     -ms-transform: translateY(-75%);
+     transform: translateY(-75%);
+}
+
+
+ #cost2017{
+     font-weight: bold;
+     font-size: 22px;
+     position: absolute;
+     text-align: center;
+     top: 78%;
+     left:0;
+     right:0;
+     margin-left: auto;
+     margin-right: auto;
+     width: 60%;
+     -ms-transform: translateY(-78%);
+     transform: translateY(-78%);
+
+ }
+
+ .arrow_evolution{
+     text-align: right;
+     position: absolute;
+     top: 80%;
+     -ms-transform: translateY(-80%);
+     transform: translateY(-80%);
+     width:90%;
+ }
+
+ .fa-rotate-45{
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+
+ }
+
+  .fa-rotate-135{
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+ }
+
+@media (min-width: 150px) {
+    .col-xs-12{
+         margin-right: 1%;
+         margin-bottom: 1%;
+     }
+}
+
+@media (min-width: 768px) {
+    .col-sm-6{
+         width: 48%;
+         margin-right: 1%;
+         margin-bottom: 1%;
+     }
+    .col-md-12{
+        width:98%;
+    }
+}
+
+@media (min-width: 992px) {
+     .col-md-4{
+         width: 33%;
+         margin-right: 1%;
+         margin-bottom: 1%;
+     }
+    .col-md-8{
+        width:64%;
+    }
+    .col-md-12{
+        width:98%;
+    }
+ }
+
