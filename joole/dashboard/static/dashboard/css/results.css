@@ -5,7 +5,7 @@ body, p {
 
 .row{
     margin-left: 0;
-    margin-right: 0;
+    margin-right: 0 ;
 }
 
 h1{
@@ -20,7 +20,7 @@ h1{
 
  .block{
      padding: 5px;
-     background-color: #589ecd;
+     background-color: #5ca5d6;
      border-radius: 3px;
  }
 

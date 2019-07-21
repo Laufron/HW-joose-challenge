@@ -35,11 +35,11 @@
                     </span>
             </div>
             {% if mismatch_message != "" %}
-            <i class="fa fa-exclamation-circle"><i>  {{ mismatch_message }}</i></i>
+                <i class="fa fa-exclamation-circle"></i> {{ mismatch_message }}
             {% endif %}
             {% if form.client.errors %}
               {% for error in form.client.errors %}
-                    <i class="fa fa-exclamation-circle"><i>  {{ error|escape }}</i></i>
+                    <i class="fa fa-exclamation-circle"></i>  {{ error|escape }}
               {% endfor %}
             {% endif %}
         </form>
