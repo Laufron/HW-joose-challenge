@@ -10,13 +10,13 @@
 {% block content %}
 
     <div class="row">
-        <div class="col-md-12 col-xs-12" style="padding:0px; margin: 0;">
-            <h1 style="border-bottom:none;" class="page-header">Mon Tableau de Bord Energie</h1>
+        <div class="col-md-12 col-xs-12" style="padding:0; margin: 0;">
+           <h1 style="border-bottom:none;" class="page-header">Mon Tableau de Bord Energie</h1>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-4 col-sm-6 col-xs-12 block">
+        <div class="col-md-4 col-xs-12 block" style="padding-bottom: 57px;">
             <div class="chart-card">
                 <div class="chart-title">COUT ANNUEL</div>
                 <div class="chart">
@@ -26,30 +26,61 @@
                     {% endfor %}
                     <div class="arrow_evolution">
                         {% if cost_increase %}
-                            <i style="color:#ff0f20" class="fa fa-2x fa-long-arrow-up fa-rotate-45"></i>
+                            <i style="color:#ff0f20;text-shadow: black 0em 0.05em 0.01em" class="fa fa-3x fa-long-arrow-up fa-rotate-45"></i>
                         {% else %}
-                             <i style="color:greenyellow" class="fa fa-2x fa-long-arrow-up fa-rotate-135"></i>
+                             <i style="color:greenyellow;text-shadow: black 0em 0.01em 0.01em" class="fa fa-3x fa-long-arrow-up fa-rotate-135"></i>
                         {% endif %}
                     </div>
                 </div>
 
             </div>
         </div>
-        <div class="col-md-8 col-sm-6 col-xs-12 block">
+         <div class="col-md-5 col-xs-12 block">
             <div class="chart-card">
-                <div class="chart-title">Annual Cost</div>
+                <div class="chart-title">VOTRE BILAN 2017</div>
                 <div class="chart">
+                    <div id="season-chart" style="height:160px;width:45%;margin-top: 3px;float: left;"></div>
+                    {% if is_elec_heating %}
+                        <div class="chauffage-info"><i class="fa fa-fire"></i> Vous utilisez un chauffage électrique ?
+                            <br>Renseignez-vous sur<br>
+                            <a style="color:#fdfdfd;" href="https://www.hellowatt.fr/entretien-chaudiere/chauffage-electrique-ou-gaz">Hello Watt</a></div>
 
+                    {% else %}
+                        <div class="chauffage-info">Vous utilisez un chauffage au gaz ?
+                        <br>Renseignez-vous sur<br>
+                            <a style="color:#fdfdfd;" href="https://www.hellowatt.fr/entretien-chaudiere/chauffage-electrique-ou-gaz">Hello Watt</a> !</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-12 block" style="height: 215px;">
+            <div class="chart-card">
+                <div class="chart-title">SUIVI CONSO</div>
+                <div class="chart" style="font-size: 14px;font-weight: bold;">
+                    <div class="dysfonctionning">
+                        {% if conso_increase > 0 %}
+                            <p class="increase">+ {{ conso_increase|floatformat:0 }} %</p>
+                        {% else %}
+                            <p class="decrease"> {{ conso_increase|floatformat:0 }} %</p>
+                        {% endif %}
+                        {% if dysfunction_detected %}
+                            <i class="fa fa-exclamation-circle" style="color:#ff0f20;"></i><p style="font-size: 13px;"> Il semble y avoir un dysfonctionnement.
+                                <br> Prenez contact avec votre fournisseur d'électricité</p>
+                        {% else %}
+                            <i class="fa fa-check-circle" style="color:greenyellow;"></i><p style="font-size: 13px;"> Votre installation semble saine.<br>
+                                Avez-vous pensé à isoler votre logement ?</p>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-     <div class="row">
+    <div class="row">
         <div class="col-md-12 block">
             <div class="chart-card">
                 <div class="chart-title">VOTRE CONSOMMATION ELECTRIQUE EN 2017</div>
                 <div id= "chart-container" class="chart">
-                    <div id="timechart" style="height:270px;"></div>
+                    <div id="timechart" style="height:215px;"></div>
                 </div>
             </div>
         </div>
@@ -79,14 +110,33 @@
             ykeys: ['y', 'z'],
             labels: ['Consommation en kWh', 'Consommation en Euro'],
             xLabels: 'month',
-            lineColors: ['#53ca32', '#eae80a'],
+            lineColors: ['#5ae332', 'rgba(253,0,14,0.66)'],
             gridTextColor: 'white',
-            fillOpacity: 0.85,
+            fillOpacity: 0.95,
             resize: true,
-            postUnits:'kWh'
+            hideHover: 'auto',
+            pointSize: ['4px', '4px'],
+            pointStrokeColors: ['black', 'black']
             }).on('click', function(i, row){
                 console.log(i, row);
-            });
+        });
+
+        new Morris.Donut({
+            element: 'season-chart',
+            data: [
+                {label: "Automne", value: {{conso_automne|floatformat:0}} },
+                {label: "Hiver", value: {{conso_hiver|floatformat:0}} },
+                {label: "Printemps", value: {{conso_printemps|floatformat:0}} },
+                {label: "Été", value: {{conso_ete|floatformat:0}} }
+                  ],
+            formatter: function (y, data) {
+                return y + '%'
+            },
+            colors : ['#a93800', '#a6dcf7', '#32b43b', '#ede62c'],
+            labelColor : 'white'
+
+        });
+
     </script>
 {% endblock %}
 

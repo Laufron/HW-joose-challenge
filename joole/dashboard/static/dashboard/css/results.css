@@ -1,8 +1,5 @@
-body {
+body, p {
     font-family: "Nunito Sans", "sans-serif";
-}
-
-#page-wrapper{
     color:#fdfdfd;
 }
 
@@ -13,16 +10,17 @@ body {
 
 h1{
     color: black;
+
 }
 
 .page-header{
-    margin:25px;
+    margin:23px 20px 20px 20px;
     padding:0;
 }
 
  .block{
      padding: 5px;
-     background-color: rgba(31, 145, 227, 0.93);
+     background-color: #589ecd;
      border-radius: 3px;
  }
 
@@ -80,7 +78,7 @@ h1{
 
  #cost2017{
      font-weight: bold;
-     font-size: 22px;
+     font-size: 30px;
      position: absolute;
      text-align: center;
      top: 78%;
@@ -88,7 +86,7 @@ h1{
      right:0;
      margin-left: auto;
      margin-right: auto;
-     width: 60%;
+     width: 65%;
      -ms-transform: translateY(-78%);
      transform: translateY(-78%);
 
@@ -120,23 +118,13 @@ h1{
     transform: rotate(135deg);
  }
 
-@media (min-width: 150px) {
+@media (min-width: 300px) {
     .col-xs-12{
          margin-right: 1%;
          margin-bottom: 1%;
      }
 }
 
-@media (min-width: 768px) {
-    .col-sm-6{
-         width: 48%;
-         margin-right: 1%;
-         margin-bottom: 1%;
-     }
-    .col-md-12{
-        width:98%;
-    }
-}
 
 @media (min-width: 992px) {
      .col-md-4{
@@ -144,11 +132,49 @@ h1{
          margin-right: 1%;
          margin-bottom: 1%;
      }
-    .col-md-8{
-        width:64%;
-    }
+    .col-md-5{
+         width: 40%;
+         margin-right: 1%;
+         margin-bottom: 1%;
+     }
+    .col-md-3{
+         width: 23%;
+         margin-right: 1%;
+         margin-bottom: 1%;
+     }
     .col-md-12{
         width:98%;
     }
  }
 
+.fa-3x {
+  font-size: 2.5em;
+}
+
+.chauffage-info{
+    margin-right: 0px;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    width:43%;
+    font-size: 14px;
+    float: right;
+}
+
+.dysfonctionning{
+    text-align: center;
+}
+
+.increase{
+    color:#ff0f20;
+    font-size: 24px;
+    text-shadow: black 0.02em 0.02em 0.01em;
+    margin-top: 7px;
+}
+
+.decrease{
+    color:greenyellow;
+    font-size: 24px;
+    text-shadow: black 0.02em 0.02em 0.01em;
+    margin-top: 7px;
+}

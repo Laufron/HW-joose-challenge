@@ -29,14 +29,14 @@ def results(request, client_id):
         Conso_watt.objects.get(client_id=client_id, year__exact=2016),
         Conso_watt.objects.get(client_id=client_id, year__exact=2017)
     ]
-
+    annual_conso = compute_costs(conso_watt)
     annual_costs = compute_costs(conso_euro)
     annual_costs_dict = {'2016': annual_costs[0], '2017': annual_costs[1]}
     cost_increase = annual_costs[0] <= annual_costs[1]
 
     elec_heating = is_elec_heating(conso_watt)
-    dysfunction_detected = is_dysfunctionning(conso_watt)
-    print(dysfunction_detected)
+    dysfunction_detected = is_dysfunctionning(conso_watt)[1]
+    conso_increase = is_dysfunctionning(conso_watt)[0]
 
     ###################################
     # ----> YOUR CODE GOES HERE <---- #
@@ -45,9 +45,14 @@ def results(request, client_id):
     context = {
         "conso_euro_2017": conso_euro[1],
         "conso_watt_2017": conso_watt[1],
+        "conso_ete": (conso_watt[1].juin + conso_watt[1].juillet + conso_watt[1].aout)/annual_conso[1]*100,
+        "conso_automne": (conso_watt[1].septembre + conso_watt[1].octobre + conso_watt[1].novembre)/annual_conso[1]*100,
+        "conso_hiver": (conso_watt[1].decembre + conso_watt[1].janvier + conso_watt[1].fevrier)/annual_conso[1]*100,
+        "conso_printemps": (conso_watt[1].mars + conso_watt[1].avril + conso_watt[1].mai)/annual_conso[1]*100,
         "annual_costs": annual_costs_dict,
         "cost_increase": cost_increase,
-        "is_elec_heating": elec_heating,
+        'conso_increase': conso_increase*100,
+        "is_elec_heating": elec_heating[1],
         "dysfunction_detected": dysfunction_detected
     }
     return render(request, 'dashboard/results.html', context)
