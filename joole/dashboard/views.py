@@ -29,18 +29,22 @@ def results(request, client_id):
         Conso_watt.objects.get(client_id=client_id, year__exact=2016),
         Conso_watt.objects.get(client_id=client_id, year__exact=2017)
     ]
-    annual_conso = compute_costs(conso_watt)
+
     annual_costs = compute_costs(conso_euro)
     annual_costs_dict = {'2016': annual_costs[0], '2017': annual_costs[1]}
+
+    # boolean indiquant une augmentation ou une diminution de la facture
     cost_increase = annual_costs[0] <= annual_costs[1]
 
+    # detection du chauffage électrique
     elec_heating = is_elec_heating(conso_watt)
+
+    # la variable dysfunction_detected contient un boolean et la valeur de la variation
     dysfunction_detected = is_dysfunctionning(conso_watt)[1]
     conso_increase = is_dysfunctionning(conso_watt)[0]
 
-    ###################################
-    # ----> YOUR CODE GOES HERE <---- #
-    ###################################
+    # conso annuelle en kWh
+    annual_conso = compute_costs(conso_watt)
 
     context = {
         "conso_euro_2017": conso_euro[1],

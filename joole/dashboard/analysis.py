@@ -11,8 +11,13 @@ def is_elec_heating(conso_watt):
     winter_percent = [conso_winter[0]/(conso_summer[0]+conso_winter[0]),
                       conso_winter[1]/(conso_summer[1]+conso_winter[1])]
 
-    # Calcul à savoir expliquer; cf photo tel
-    return [winter_percent[0] >= 0.68, winter_percent[1] >= 0.68]
+    # Calcul basé sur le fait que le chauffage electrique représente
+    # en moyenne 67% de la facture électrique hivernale
+    # en considérant qu'en hiver on consomme autant qu'en été sans chauffage électrique
+
+    # Calcul de conso_hiver/conso_totale(ete+hiver)
+    # ==> valeur limite calculée : 75% (marge prise pour accepter un rapport de 50% sur la facture --> vl=0.67)
+    return [winter_percent[0] >= 0.67, winter_percent[1] >= 0.67]
 
 
 def is_dysfunctionning(conso_watt):

@@ -4,8 +4,8 @@ body, p {
 }
 
 .row{
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 h1{
@@ -101,6 +101,38 @@ h1{
      width:90%;
  }
 
+
+
+.chauffage-info{
+    margin-right: 0px;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    width:43%;
+    font-size: 14px;
+    float: right;
+}
+
+.dysfonctionning{
+    text-align: center;
+}
+
+.increase{
+    color:#ff0f20;
+    font-size: 24px;
+    text-shadow: black 0.02em 0.02em 0.01em;
+    margin-top: 7px;
+}
+
+.decrease{
+    color:greenyellow;
+    font-size: 24px;
+    text-shadow: black 0.02em 0.02em 0.01em;
+    margin-top: 7px;
+}
+
+/* Overwrite */
+
  .fa-rotate-45{
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
@@ -149,32 +181,4 @@ h1{
 
 .fa-3x {
   font-size: 2.5em;
-}
-
-.chauffage-info{
-    margin-right: 0px;
-    margin-top: 20px;
-    text-align: center;
-    font-weight: bold;
-    width:43%;
-    font-size: 14px;
-    float: right;
-}
-
-.dysfonctionning{
-    text-align: center;
-}
-
-.increase{
-    color:#ff0f20;
-    font-size: 24px;
-    text-shadow: black 0.02em 0.02em 0.01em;
-    margin-top: 7px;
-}
-
-.decrease{
-    color:greenyellow;
-    font-size: 24px;
-    text-shadow: black 0.02em 0.02em 0.01em;
-    margin-top: 7px;
 }
